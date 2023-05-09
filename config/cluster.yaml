@@ -1,0 +1,28 @@
+apiVersion: k3d.io/v1alpha4
+kind: Simple
+metadata:
+  name: testcluster
+servers: 1
+agents: 2
+image: rancher/k3s:v1.20.4-k3s1
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+env:
+  - envVar: bar=baz
+    nodeFilters:
+      - server:0
+options:
+  k3d:
+    wait: true
+    timeout: "60s"
+    disableLoadbalancer: false
+    disableImageVolume: false
+    disableRollback: false
+    loadbalancer:
+      configOverrides:
+        - settings.workerConnections=2048
+  kubeconfig:
+    updateDefaultKubeconfig: true
+    switchCurrentContext: true
