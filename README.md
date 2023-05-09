@@ -6,4 +6,10 @@
 - Go
 - Cliente de kubernetes (kubectl, lens, k9s, etc)
 
-## Instalación
+## Despliegue
+
+Para desplegar el cluster, ejecutar el siguiente comando:
+
+```bash
+make run
+```

@@ -6,7 +6,7 @@ build:
 	@echo "Building binary..."
 	@go build -o bin/localk8s -v
 
-run:
+run: build
 	@echo "Running binary..."
 	@./bin/localk8s -action $(ACTION)
 
